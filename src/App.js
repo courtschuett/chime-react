@@ -1,8 +1,7 @@
-import './App.css';
-import React, { Component } from 'react';
+import { Component } from 'react';
 import axios from 'axios';
 
-export default class Form extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,32 +28,31 @@ export default class Form extends Component {
       { key1: `${name}, ${message}` }
     );
   }
-}
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label>Name:</label>
+          <input
+            type="text"
+            name="name"
+            onChange={this.handleChange}
+            value={this.state.name}
+          />
 
-function App() {
-  return (
-    <div>
-      <form onSubmit={this.handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          onChange={this.handleChange}
-          value={this.state.name}
-        />
+          <label>Message:</label>
+          <input
+            type="text"
+            name="message"
+            onChange={this.handleChange}
+            value={this.state.message}
+          />
 
-        <label>Message:</label>
-        <input
-          type="text"
-          name="message"
-          onChange={this.handleChange}
-          value={this.state.message}
-        />
-
-        <button type="submit">Send</button>
-      </form>
-    </div>
-  );
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default App;
